@@ -1,6 +1,6 @@
 // Base URL of your backend — change this if your API runs elsewhere
-// (e.g. during local dev it might be http://localhost:5000)
-const API_BASE_URL = "http://localhost:5000";
+// (e.g. during local dev it might be https://apipro.akamster.com)
+const API_BASE_URL = "https://apipro.akamster.com";
 
 const TOKEN_KEY = "proai_token";
 const TOKEN_EXPIRY_KEY = "proai_token_expiry";
