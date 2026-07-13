@@ -451,52 +451,52 @@ export default function ProAiBotUI() {
 
 
   const handleNext = async () => {
-  setFetchError(null);
-  setLoadingNext(true);
+    setFetchError(null);
+    setLoadingNext(true);
 
-  try {
-    const res = await fetch(NEXT_CRASH_API_URL);
+    try {
+      const res = await fetch(NEXT_CRASH_API_URL);
 
-    if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      if (!res.ok) throw new Error(`Request failed: ${res.status}`);
 
-    const data = await res.json(); // { value, time }
+      const data = await res.json(); // { value, time }
 
-    const now = new Date();
+      const now = new Date();
 
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-    const [h, m] = data.time.split(":").map(Number);
+      const [h, m] = data.time.split(":").map(Number);
 
-    const apiMinutes = h * 60 + m;
+      const apiMinutes = h * 60 + m;
 
-    const remaining = apiMinutes - currentMinutes;
+      const remaining = apiMinutes - currentMinutes;
 
-    if (remaining > 7) {
-      setBetTime("-");
-      setBetTimeIsClock(false);
+      if (remaining > 7) {
+        setBetTime("-");
+        setBetTimeIsClock(false);
 
-      spinSignalScore(0);
+        spinSignalScore(0);
 
-      return;
+        return;
+      }
+
+      // Normal Flow
+      spinSignalScore(Number(data.value));
+
+      setBetTime(formatTo12Hour(data.time));
+      setBetTimeIsClock(true);
+
+    } catch (err) {
+      console.error("nextcrash2 fetch failed:", err);
+
+      setFetchError("Couldn't reach the API — showing a random value instead.");
+
+      spinSignalScore();
+
+    } finally {
+      setLoadingNext(false);
     }
-
-    // Normal Flow
-    spinSignalScore(Number(data.value));
-
-    setBetTime(formatTo12Hour(data.time));
-    setBetTimeIsClock(true);
-
-  } catch (err) {
-    console.error("nextcrash2 fetch failed:", err);
-
-    setFetchError("Couldn't reach the API — showing a random value instead.");
-
-    spinSignalScore();
-
-  } finally {
-    setLoadingNext(false);
-  }
-};
+  };
 
   // While the auth check runs (and while it's redirecting), render nothing.
   if (!authReady) return null;
@@ -559,219 +559,219 @@ export default function ProAiBotUI() {
       {trialExpired ? (
         <UpgradeScreen />
       ) : (
-      <div
-        style={{
-          background: "#000",
-          minHeight: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          fontFamily:
-            "'SF Pro Display','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
-        }}
-      >
-      <div style={{ width: "100%", maxWidth: 390, padding: "14px 16px 18px", boxSizing: "border-box" }}>
-        {/* ---------- Header ---------- */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              border: "1.5px solid rgba(74,222,128,0.7)",
-              borderRadius: 999,
-              padding: "7px 8px 7px 14px",
-              boxShadow: "0 0 10px rgba(34,197,94,0.35)",
-            }}
-          >
-            <ChevronLeftIcon />
-            <div
-              style={{
-                background: "white",
-                color: "black",
-                fontWeight: 700,
-                fontSize: 14,
-                borderRadius: 999,
-                minWidth: 26,
-                height: 26,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "0 4px",
-              }}
-            >
-              {MOCK.notifCount}
-            </div>
-          </div>
-
-          <div style={{ textAlign: "center" }}>
-            <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: -0.5, lineHeight: 1.1 }}>PRO Ai</div>
-            <div style={{ fontSize: 13, color: "#9CA3AF", marginTop: 1 }}>bot</div>
-          </div>
-
-          <div
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 999,
-              border: "2px solid #22C55E",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#4ADE80",
-              fontWeight: 700,
-              fontSize: 13,
-              boxShadow: "0 0 12px rgba(34,197,94,0.5)",
-            }}
-          >
-            {MOCK.userInitials}
-          </div>
-        </div>
-
-        {/* ---------- AI Signal Engine / Players ---------- */}
-        <Card style={{ marginBottom: 12, padding: "16px 14px" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1 }}>
+        <div
+          style={{
+            background: "#000",
+            minHeight: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            fontFamily:
+              "'SF Pro Display','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif",
+          }}
+        >
+          <div style={{ width: "100%", maxWidth: 390, padding: "14px 16px 18px", boxSizing: "border-box" }}>
+            {/* ---------- Header ---------- */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
               <div
                 style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: 10,
-                  background: "#07130A",
-                  border: "1px solid rgba(74,222,128,0.4)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  border: "1.5px solid rgba(74,222,128,0.7)",
+                  borderRadius: 999,
+                  padding: "7px 8px 7px 14px",
+                  boxShadow: "0 0 10px rgba(34,197,94,0.35)",
+                }}
+              >
+                <ChevronLeftIcon />
+                <div
+                  style={{
+                    background: "white",
+                    color: "black",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    borderRadius: 999,
+                    minWidth: 26,
+                    height: 26,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    padding: "0 4px",
+                  }}
+                >
+                  {MOCK.notifCount}
+                </div>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: -0.5, lineHeight: 1.1 }}>PRO Ai</div>
+                <div style={{ fontSize: 13, color: "#9CA3AF", marginTop: 1 }}>bot</div>
+              </div>
+
+              <div
+                style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 999,
+                  border: "2px solid #22C55E",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  flexShrink: 0,
+                  color: "#4ADE80",
+                  fontWeight: 700,
+                  fontSize: 13,
+                  boxShadow: "0 0 12px rgba(34,197,94,0.5)",
                 }}
               >
-                <ChipIcon />
-              </div>
-              <div>
-                <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>
-                  AI SIGNAL ENGINE
-                </div>
-                <div style={{ fontSize: 20, fontWeight: 800, margin: "1px 0" }}>Running</div>
-                <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
-                  <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
-                  Auto Refresh
-                </div>
+                {MOCK.userInitials}
               </div>
             </div>
 
-            <div style={{ width: 1, alignSelf: "stretch", background: "rgba(74,222,128,0.25)", margin: "0 12px" }} />
+            {/* ---------- AI Signal Engine / Players ---------- */}
+            <Card style={{ marginBottom: 12, padding: "16px 14px" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1 }}>
+                  <div
+                    style={{
+                      width: 46,
+                      height: 46,
+                      borderRadius: 10,
+                      background: "#07130A",
+                      border: "1px solid rgba(74,222,128,0.4)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <ChipIcon />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>
+                      AI SIGNAL ENGINE
+                    </div>
+                    <div style={{ fontSize: 20, fontWeight: 800, margin: "1px 0" }}>Running</div>
+                    <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
+                      <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
+                      Auto Refresh
+                    </div>
+                  </div>
+                </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1 }}>
+                <div style={{ width: 1, alignSelf: "stretch", background: "rgba(74,222,128,0.25)", margin: "0 12px" }} />
+
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1 }}>
+                  <div
+                    style={{
+                      width: 46,
+                      height: 46,
+                      borderRadius: 10,
+                      background: "#1E7A3B",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <PeopleIcon />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>PLAYERS</div>
+                    <div key={players} style={{ fontSize: 20, fontWeight: 800, margin: "1px 0", animation: "playerBump 0.5s ease", color: "white" }}>
+                      {players.toLocaleString()}
+                    </div>
+                    <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
+                      <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
+                      Active
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* ---------- Free trial ---------- */}
+            <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10 }}>
+                <div style={{ paddingTop: 2 }}>
+                  <ClockIcon />
+                </div>
+                <div>
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.4 }}>
+                    24 HOURS FREE TRIAL
+                  </div>
+                  <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35 }}>
+                    Enjoy all features for free for the next 24 hours!
+                  </div>
+                </div>
+              </div>
               <div
                 style={{
-                  width: 46,
-                  height: 46,
-                  borderRadius: 10,
-                  background: "#1E7A3B",
+                  background: trialExpired ? "#7A1E1E" : "#1E7A3B",
+                  borderRadius: 12,
+                  padding: "8px 12px",
+                  textAlign: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "red" }}>{trialLabel}</div>
+                <div className="timer-label" style={{ fontSize: 10.5, }}>
+                  {trialExpired ? "upgrade to continue" : "remaining"}
+                </div>
+              </div>
+            </Card>
+
+            {/* ---------- Premium ---------- */}
+            <Card style={{ marginBottom: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+                <div style={{ display: "flex", gap: 10 }}>
+                  <div style={{ paddingTop: 2 }}>
+                    <CrownIcon />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13.5, fontWeight: 700, letterSpacing: 0.4 }}>BUY PREMIUM</div>
+                    <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35, maxWidth: 190 }}>
+                      After your free trial, continue with Premium Plan.
+                    </div>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    background: "#1E7A3B",
+                    borderRadius: 12,
+                    padding: "8px 12px",
+                    textAlign: "center",
+                    flexShrink: 0,
+                  }}
+                >
+                  <div style={{ fontSize: 15, fontWeight: 800 }}>{MOCK.premiumPrice}</div>
+                  <div style={{ fontSize: 10.5, color: "#BBF7D0" }}>per month</div>
+                </div>
+              </div>
+
+              <button
+                style={{
+                  width: "100%",
+                  marginTop: 12,
+                  border: "none",
+                  borderRadius: 14,
+                  padding: "13px 0",
+                  background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: 14.5,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  flexShrink: 0,
+                  gap: 8,
+                  cursor: "pointer",
                 }}
               >
-                <PeopleIcon />
-              </div>
-              <div>
-                <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>PLAYERS</div>
-                <div key={players} style={{ fontSize: 20, fontWeight: 800, margin: "1px 0", animation: "playerBump 0.5s ease" ,color:"white"}}>
-                  {players.toLocaleString()}
-                </div>
-                <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
-                  <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
-                  Active
-                </div>
-              </div>
-            </div>
-          </div>
-        </Card>
+                <CrownIcon size={17} /> Upgrade to Premium
+              </button>
+            </Card>
 
-        {/* ---------- Free trial ---------- */}
-        <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-          <div style={{ display: "flex", gap: 10 }}>
-            <div style={{ paddingTop: 2 }}>
-              <ClockIcon />
-            </div>
-            <div>
-              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.4 }}>
-                24 HOURS FREE TRIAL
-              </div>
-              <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35 }}>
-                Enjoy all features for free for the next 24 hours!
-              </div>
-            </div>
-          </div>
-          <div
-            style={{
-              background: trialExpired ? "#7A1E1E" : "#1E7A3B",
-              borderRadius: 12,
-              padding: "8px 12px",
-              textAlign: "center",
-              flexShrink: 0,
-            }}
-          >
-            <div className="timer-number" style={{ fontSize: 15, fontWeight: 800 }}>{trialLabel}</div>
-            <div className="timer-label" style={{ fontSize: 10.5 }}>
-              {trialExpired ? "upgrade to continue" : "remaining"}
-            </div>
-          </div>
-        </Card>
-
-        {/* ---------- Premium ---------- */}
-        <Card style={{ marginBottom: 12 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-            <div style={{ display: "flex", gap: 10 }}>
-              <div style={{ paddingTop: 2 }}>
-                <CrownIcon />
-              </div>
-              <div>
-                <div style={{ fontSize: 13.5, fontWeight: 700, letterSpacing: 0.4 }}>BUY PREMIUM</div>
-                <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35, maxWidth: 190 }}>
-                  After your free trial, continue with Premium Plan.
-                </div>
-              </div>
-            </div>
-            <div
-              style={{
-                background: "#1E7A3B",
-                borderRadius: 12,
-                padding: "8px 12px",
-                textAlign: "center",
-                flexShrink: 0,
-              }}
-            >
-              <div style={{ fontSize: 15, fontWeight: 800 }}>{MOCK.premiumPrice}</div>
-              <div style={{ fontSize: 10.5, color: "#BBF7D0" }}>per month</div>
-            </div>
-          </div>
-
-          <button
-            style={{
-              width: "100%",
-              marginTop: 12,
-              border: "none",
-              borderRadius: 14,
-              padding: "13px 0",
-              background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
-              color: "white",
-              fontWeight: 700,
-              fontSize: 14.5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              cursor: "pointer",
-            }}
-          >
-            <CrownIcon size={17} /> Upgrade to Premium
-          </button>
-        </Card>
-
-        {/* ---------- Next reminder ---------- */}
-        {/* <Card style={{ marginBottom: 6, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            {/* ---------- Next reminder ---------- */}
+            {/* <Card style={{ marginBottom: 6, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div
               style={{
@@ -798,188 +798,189 @@ export default function ProAiBotUI() {
           </div>
         </Card> */}
 
-        {/* ---------- Bet time gauge ---------- */}
-        <div style={{ position: "relative", height: 78, marginTop: 4 }}>
-          <svg width="100%" height="78" viewBox="0 0 358 78" style={{ position: "absolute", top: 0, left: 0 }}>
-            {/* left arm */}
-            <path d="M0 39 H100" stroke="#22C55E" strokeWidth="1.4" opacity="0.7" />
-            <path d="M18 20 V58 M40 26 V52" stroke="#22C55E" strokeWidth="1.4" opacity="0.55" />
-            {/* right arm */}
-            <path d="M258 39 H358" stroke="#22C55E" strokeWidth="1.4" opacity="0.7" />
-            <path d="M340 20 V58 M318 26 V52" stroke="#22C55E" strokeWidth="1.4" opacity="0.55" />
-          </svg>
-          <div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: 0,
-              transform: "translateX(-50%)",
-              width: 168,
-              height: 78,
-              borderRadius: 999,
-              border: "1.5px solid #22C55E",
-              background: "#000",
-              boxShadow: "0 0 22px rgba(34,197,94,0.55)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <div style={{ fontSize: 11, color: "#4ADE80", display: "flex", alignItems: "center", gap: 4 }}>
-              <ClockIcon size={12} /> Bet Time
+            {/* ---------- Bet time gauge ---------- */}
+            <div style={{ position: "relative", height: 78, marginTop: 4 }}>
+              <svg width="100%" height="78" viewBox="0 0 358 78" style={{ position: "absolute", top: 0, left: 0 }}>
+                {/* left arm */}
+                <path d="M0 39 H100" stroke="#22C55E" strokeWidth="1.4" opacity="0.7" />
+                <path d="M18 20 V58 M40 26 V52" stroke="#22C55E" strokeWidth="1.4" opacity="0.55" />
+                {/* right arm */}
+                <path d="M258 39 H358" stroke="#22C55E" strokeWidth="1.4" opacity="0.7" />
+                <path d="M340 20 V58 M318 26 V52" stroke="#22C55E" strokeWidth="1.4" opacity="0.55" />
+              </svg>
+              <div
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: 0,
+                  transform: "translateX(-50%)",
+                  width: 168,
+                  height: 78,
+                  borderRadius: 999,
+                  border: "1.5px solid #22C55E",
+                  background: "#000",
+                  boxShadow: "0 0 22px rgba(34,197,94,0.55)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <div style={{ fontSize: 11, color: "#4ADE80", display: "flex", alignItems: "center", gap: 4 }}>
+                  <ClockIcon size={12} /> Bet Time
+                </div>
+                <div className="timer-number" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>{betTime}</div>
+                <div className="timer-label" style={{ fontSize: 10.5 }}>
+                  {betTimeIsClock ? "next crash at" : "minutes"}
+                </div>
+              </div>
             </div>
-            <div className="timer-number" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>{betTime}</div>
-            <div className="timer-label" style={{ fontSize: 10.5 }}>
-              {betTimeIsClock ? "next crash at" : "minutes"}
-            </div>
-          </div>
-        </div>
 
-        {/* ---------- Signal score circle ---------- */}
-        <div style={{ display: "flex", justifyContent: "center", padding: "18px 0 22px" }}>
-          <div style={{ position: "relative", width: 260, height: 260 }}>
-            {spinning && <div key={spinAttempt} className="spin-ripple" />}
-            {/* dotted outer ring */}
-            <svg width="260" height="260" style={{ position: "absolute", inset: 0 }}>
-              <circle
-                cx="130"
-                cy="130"
-                r="126"
-                fill="none"
-                stroke="#2E8B4E"
-                strokeWidth="2"
-                strokeDasharray="1.5 7"
-              />
-            </svg>
-            {/* glow ring */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 10,
-                borderRadius: "50%",
-                border: "5px solid #22C55E",
-                boxShadow: spinning
-                  ? "0 0 65px rgba(34,197,94,0.95), inset 0 0 65px rgba(34,197,94,0.55)"
-                  : "0 0 45px rgba(34,197,94,0.65), inset 0 0 45px rgba(34,197,94,0.35)",
-                transition: "box-shadow 0.3s ease",
-              }}
-            />
-            {/* inner dark circle */}
-            <div
-              style={{
-                position: "absolute",
-                inset: 26,
-                borderRadius: "50%",
-                background: "#000",
-                border: "1px solid rgba(74,222,128,0.4)",
+            {/* ---------- Signal score circle ---------- */}
+            <div style={{ display: "flex", justifyContent: "center", padding: "18px 0 22px" }}>
+              <div style={{ position: "relative", width: 260, height: 260 }}>
+                {spinning && <div key={spinAttempt} className="spin-ripple" />}
+                {/* dotted outer ring */}
+                <svg width="260" height="260" style={{ position: "absolute", inset: 0 }}>
+                  <circle
+                    cx="130"
+                    cy="130"
+                    r="126"
+                    fill="none"
+                    stroke="#2E8B4E"
+                    strokeWidth="2"
+                    strokeDasharray="1.5 7"
+                  />
+                </svg>
+                {/* glow ring */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 10,
+                    borderRadius: "50%",
+                    border: "5px solid #22C55E",
+                    boxShadow: spinning
+                      ? "0 0 65px rgba(34,197,94,0.95), inset 0 0 65px rgba(34,197,94,0.55)"
+                      : "0 0 45px rgba(34,197,94,0.65), inset 0 0 45px rgba(34,197,94,0.35)",
+                    transition: "box-shadow 0.3s ease",
+                  }}
+                />
+                {/* inner dark circle */}
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 26,
+                    borderRadius: "50%",
+                    background: "#000",
+                    border: "1px solid rgba(74,222,128,0.4)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 4,
+                  }}
+                >
+                  <TrendUpIcon />
+                  {signalScore.toFixed(2) > 1 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 40, fontWeight: 800, color: "yellow" }}>
+                    {signalScore.toFixed(2)}x
+                  </div>}
+                  {signalScore.toFixed(2) == 0 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800, color: "yellow" }}>
+                    Wait For SomeTime !
+                  </div>}
+                  {signalScore.toFixed(2) == 1 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800, color: "yellow" }}>
+                    click on next!
+                  </div>}
+                  <div style={{ fontSize: 14, color: "#4ADE80" }}>Signal Score</div>
+                </div>
+              </div>
+            </div>
+
+            {/* ---------- Play / Next ---------- */}
+            <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+              <button onClick={() => (window.location.href = "https://real-cash365.live")}>          
+                  style={{
+
+                flex: 1,
+                border: "none",
+                borderRadius: 16,
+                padding: "15px 0",
+                background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
+                color: "white",
+                fontWeight: 700,
+                fontSize: 16,
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: 4,
+                gap: 8,
+                cursor: "pointer",
+              }}
+          >
+                <PlayIcon /> Play
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={loadingNext}
+                style={{
+                  flex: 1,
+                  border: "none",
+                  borderRadius: 16,
+                  padding: "15px 0",
+                  background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  cursor: loadingNext ? "wait" : "pointer",
+                  opacity: loadingNext ? 0.7 : 1,
+                }}
+              >
+                <ArrowRightIcon /> {loadingNext ? "Loading..." : "Next"}
+              </button>
+            </div>
+
+            {fetchError && (
+              <div style={{ color: "#F87171", fontSize: 12.5, textAlign: "center", marginTop: -4, marginBottom: 12 }}>
+                {fetchError}
+              </div>
+            )}
+
+            {/* ---------- Footer info ---------- */}
+            <div
+              style={{
+                border: "1px solid rgba(74,222,128,0.3)",
+                borderRadius: 16,
+                padding: "12px 14px",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 10,
+                marginBottom: 12,
               }}
             >
-              <TrendUpIcon />
-              {signalScore.toFixed(2) >1 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 40, fontWeight: 800 ,color:"yellow"}}>
-                {signalScore.toFixed(2)}x
-              </div>}
-                { signalScore.toFixed(2) == 0 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800 ,color:"yellow"}}>
-                  Wait For SomeTime !
-              </div>}
-               { signalScore.toFixed(2) == 1 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800 ,color:"yellow"}}>
-                  click on next!
-              </div>}
-              <div style={{ fontSize: 14, color: "#4ADE80" }}>Signal Score</div>
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: 999,
+                  background: "#1E7A3B",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                  marginTop: 1,
+                }}
+              >
+                <span style={{ fontSize: 12, fontWeight: 800, color: "white" }}>i</span>
+              </div>
+              <div style={{ fontSize: 13.5, color: "#D1D5DB", lineHeight: 1.4 }}>
+                Use all features while your free trial is active. Upgrade anytime to continue.
+              </div>
             </div>
-          </div>
-        </div>
 
-        {/* ---------- Play / Next ---------- */}
-        <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-          <button
-            style={{
-              flex: 1,
-              border: "none",
-              borderRadius: 16,
-              padding: "15px 0",
-              background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
-              color: "white",
-              fontWeight: 700,
-              fontSize: 16,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              cursor: "pointer",
-            }}
-          >
-            <PlayIcon /> Play
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={loadingNext}
-            style={{
-              flex: 1,
-              border: "none",
-              borderRadius: 16,
-              padding: "15px 0",
-              background: "linear-gradient(180deg, #2E8B4E 0%, #1B5E33 100%)",
-              color: "white",
-              fontWeight: 700,
-              fontSize: 16,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 8,
-              cursor: loadingNext ? "wait" : "pointer",
-              opacity: loadingNext ? 0.7 : 1,
-            }}
-          >
-            <ArrowRightIcon /> {loadingNext ? "Loading..." : "Next"}
-          </button>
-        </div>
-
-        {fetchError && (
-          <div style={{ color: "#F87171", fontSize: 12.5, textAlign: "center", marginTop: -4, marginBottom: 12 }}>
-            {fetchError}
-          </div>
-        )}
-
-        {/* ---------- Footer info ---------- */}
-        <div
-          style={{
-            border: "1px solid rgba(74,222,128,0.3)",
-            borderRadius: 16,
-            padding: "12px 14px",
-            display: "flex",
-            alignItems: "flex-start",
-            gap: 10,
-            marginBottom: 12,
-          }}
-        >
-          <div
-            style={{
-              width: 20,
-              height: 20,
-              borderRadius: 999,
-              background: "#1E7A3B",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              marginTop: 1,
-            }}
-          >
-            <span style={{ fontSize: 12, fontWeight: 800, color: "white" }}>i</span>
-          </div>
-          <div style={{ fontSize: 13.5, color: "#D1D5DB", lineHeight: 1.4 }}>
-            Use all features while your free trial is active. Upgrade anytime to continue.
-          </div>
-        </div>
-
-        {/* ---------- Message input ---------- */}
-        {/* <div
+            {/* ---------- Message input ---------- */}
+            {/* <div
           style={{
             border: "1px solid #2B2B2B",
             background: "#111111",
@@ -1007,8 +1008,8 @@ export default function ProAiBotUI() {
           <HalfCircleIcon />
           <MicIcon />
         </div> */}
-      </div>
-      </div>
+          </div>
+        </div>
       )}
     </>
   );
