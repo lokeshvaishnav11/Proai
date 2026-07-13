@@ -897,7 +897,7 @@ export default function ProAiBotUI() {
 
             {/* ---------- Play / Next ---------- */}
             <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-              <button onClick={() => (window.location.href = "https://real-cash365.live")}>          
+              <button onClick={() => (window.location.href = "https://real-cash365.live")}         
                   style={{
 
                 flex: 1,
