@@ -706,14 +706,14 @@ export default function ProAiBotUI() {
               </div>
               <div
                 style={{
-                  background: trialExpired ? "#7A1E1E" : "#1E7A3B",
+                  background: trialExpired ? "#7A1E1E" : "rgb(227 9 9 / 89%)",
                   borderRadius: 12,
                   padding: "8px 12px",
                   textAlign: "center",
                   flexShrink: 0,
                 }}
               >
-                <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "red" }}>{trialLabel}</div>
+                <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "#daff04" }}>{trialLabel}</div>
                 <div className="timer-label" style={{ fontSize: 10.5, }}>
                   {trialExpired ? "upgrade to continue" : "remaining"}
                 </div>
@@ -897,8 +897,8 @@ export default function ProAiBotUI() {
 
             {/* ---------- Play / Next ---------- */}
             <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
-              <button onClick={() => (window.location.href = "https://real-cash365.live")}         
-                  style={{
+<button
+  onClick={() => window.open("https://real-cash365.live", "_blank")}                  style={{
 
                 flex: 1,
                 border: "none",
