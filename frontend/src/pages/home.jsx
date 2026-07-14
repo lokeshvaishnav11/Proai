@@ -97,6 +97,8 @@ function useLivePlayers(base = 1256, min = 1150, max = 1400) {
 // Point this at your own local dummy API — e.g. https://api.ai-pro-bot.com/nextcrash2
 // It should return JSON like: { "value": 54.53, "time": "15:50" }
 const NEXT_CRASH_API_URL = "https://api.ai-pro-bot.com/nextcrash2";
+// const NEXT_CRASH_API_URL = "http://localhost:5000";
+
 
 /** Converts "HH:mm" (24h) to "h:mm AM/PM". Falls back to the raw string if it can't parse. */
 function formatTo12Hour(timeStr) {
@@ -426,6 +428,8 @@ export default function ProAiBotUI() {
   const [betTimeIsClock, setBetTimeIsClock] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+    const [showVideo, setShowVideo] = useState(false);
+
 
   // const handleNext = async () => {
   //   setFetchError(null);
@@ -947,6 +951,157 @@ export default function ProAiBotUI() {
               </div>
             )}
 
+
+             {/* <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+              <div style={{ display: "flex", gap: 10 }}>
+                <div style={{ paddingTop: 2 }}>
+                  <ClockIcon />
+                </div>
+                <div>
+                  <div style={{ fontSize: 12.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.4 }}>
+                    How Ai Pro Bot Works ?
+                  </div>
+                  <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35 }}>
+                   Watch this short video to understand how it works.
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  background: "yellow",
+                  borderRadius: 12,
+                  padding: "8px 12px",
+                  textAlign: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "black" }}><i className="fa fas-tv"></i> Watch Video</div>
+                
+              </div>
+            </Card> */}
+            <Card
+        style={{
+          marginBottom: 12,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 10,
+        }}
+      >
+        <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ paddingTop: 2 }}>
+            <ClockIcon />
+          </div>
+
+          <div>
+            <div
+              style={{
+                fontSize: 12.5,
+                fontWeight: 700,
+                color: "#4ADE80",
+                letterSpacing: 0.4,
+              }}
+            >
+              How Ai Pro Bot Works ?
+            </div>
+
+            <div
+              style={{
+                fontSize: 13.5,
+                color: "#D1D5DB",
+                marginTop: 2,
+                lineHeight: 1.35,
+              }}
+            >
+              Watch this short video to understand how it works.
+            </div>
+          </div>
+        </div>
+
+        <div
+          onClick={() => setShowVideo(true)}
+          style={{
+            background: "yellow",
+            borderRadius: 12,
+            padding: "8px 12px",
+            textAlign: "center",
+            flexShrink: 0,
+            cursor: "pointer",
+          }}
+        >
+          <div
+            className="timer-number"
+            style={{
+              fontSize: 15,
+              fontWeight: 800,
+              color: "black",
+            }}
+          >
+            <i className="fa fa-tv"></i> Watch Video
+          </div>
+        </div>
+      </Card>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <div
+          onClick={() => setShowVideo(false)}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.8)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              width: "90%",
+              maxWidth: 700,
+              background: "#000",
+              borderRadius: 10,
+              overflow: "hidden",
+            }}
+          >
+            <video
+  controls
+  playsInline
+  preload="metadata"
+  style={{ width: "100%" }}
+  autoPlay
+>
+  <source src="/video/newv.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+            <div
+              style={{
+                padding: 10,
+                textAlign: "right",
+                background: "#111",
+              }}
+            >
+              <button
+                onClick={() => setShowVideo(false)}
+                style={{
+                  padding: "8px 18px",
+                  cursor: "pointer",
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+           
             {/* ---------- Footer info ---------- */}
             <div
               style={{
@@ -980,35 +1135,10 @@ export default function ProAiBotUI() {
             </div>
 
             {/* ---------- Message input ---------- */}
-            {/* <div
-          style={{
-            border: "1px solid #2B2B2B",
-            background: "#111111",
-            borderRadius: 999,
-            padding: "10px 16px",
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-          }}
-        >
-          <PaperclipIcon />
-          <input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Message"
-            style={{
-              flex: 1,
-              background: "transparent",
-              border: "none",
-              outline: "none",
-              color: "white",
-              fontSize: 14.5,
-            }}
-          />
-          <HalfCircleIcon />
-          <MicIcon />
-        </div> */}
+          
           </div>
+
+          
         </div>
       )}
     </>
