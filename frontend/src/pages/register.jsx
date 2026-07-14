@@ -543,7 +543,8 @@ const Register = () => {
                 border: "1px solid rgba(126,211,33,0.25)",
               }}
             />
-            <RobotIcon />
+            {/* <RobotIcon /> */}
+            <img src="/video/logo.jpeg" style={{ width: "166px"}}></img>
           </div>
         </div>
 
