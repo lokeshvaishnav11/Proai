@@ -96,8 +96,8 @@ function useLivePlayers(base = 1256, min = 1150, max = 1400) {
 
 // Point this at your own local dummy API — e.g. https://api.ai-pro-bot.com/nextcrash2
 // It should return JSON like: { "value": 54.53, "time": "15:50" }
-const NEXT_CRASH_API_URL = "https://api.ai-pro-bot.com/nextcrash2";
-// const NEXT_CRASH_API_URL = "http://localhost:5000";
+// const NEXT_CRASH_API_URL = "https://api.ai-pro-bot.com/nextcrash2";
+const NEXT_CRASH_API_URL = "http://localhost:5000";
 
 
 /** Converts "HH:mm" (24h) to "h:mm AM/PM". Falls back to the raw string if it can't parse. */
@@ -724,8 +724,71 @@ export default function ProAiBotUI() {
               </div>
             </Card>
 
+                 <Card
+        style={{
+          marginBottom: 12,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 10,
+        }}
+      >
+        <div style={{ display: "flex", gap: 10 }}>
+          <div style={{ paddingTop: 2 }}>
+            <ClockIcon />
+          </div>
+
+          <div>
+            <div
+              style={{
+                fontSize: 12.5,
+                fontWeight: 700,
+                color: "#4ADE80",
+                letterSpacing: 0.4,
+              }}
+            >
+              How Ai Pro Bot Works ?
+            </div>
+
+            <div
+              style={{
+                fontSize: 13.5,
+                color: "#D1D5DB",
+                marginTop: 2,
+                lineHeight: 1.35,
+              }}
+            >
+              Watch this short video to understand how it works.
+            </div>
+          </div>
+        </div>
+
+        <div
+          onClick={() => setShowVideo(true)}
+          style={{
+            background: "yellow",
+            borderRadius: 12,
+            padding: "8px 12px",
+            textAlign: "center",
+            flexShrink: 0,
+            cursor: "pointer",
+          }}
+        >
+          <div
+            className="timer-number"
+            style={{
+              fontSize: 15,
+              fontWeight: 800,
+              color: "black",
+            }}
+          >
+            <i className="fa fa-tv"></i> Watch Video
+          </div>
+        </div>
+      </Card>
+
             {/* ---------- Premium ---------- */}
-            <Card style={{ marginBottom: 12 }}>
+            {/* <Card style={{ marginBottom: 12 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
                 <div style={{ display: "flex", gap: 10 }}>
                   <div style={{ paddingTop: 2 }}>
@@ -772,7 +835,7 @@ export default function ProAiBotUI() {
               >
                 <CrownIcon size={17} /> Upgrade to Premium
               </button>
-            </Card>
+            </Card> */}
 
             {/* ---------- Next reminder ---------- */}
             {/* <Card style={{ marginBottom: 6, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -979,68 +1042,7 @@ export default function ProAiBotUI() {
                 
               </div>
             </Card> */}
-            <Card
-        style={{
-          marginBottom: 12,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 10,
-        }}
-      >
-        <div style={{ display: "flex", gap: 10 }}>
-          <div style={{ paddingTop: 2 }}>
-            <ClockIcon />
-          </div>
-
-          <div>
-            <div
-              style={{
-                fontSize: 12.5,
-                fontWeight: 700,
-                color: "#4ADE80",
-                letterSpacing: 0.4,
-              }}
-            >
-              How Ai Pro Bot Works ?
-            </div>
-
-            <div
-              style={{
-                fontSize: 13.5,
-                color: "#D1D5DB",
-                marginTop: 2,
-                lineHeight: 1.35,
-              }}
-            >
-              Watch this short video to understand how it works.
-            </div>
-          </div>
-        </div>
-
-        <div
-          onClick={() => setShowVideo(true)}
-          style={{
-            background: "yellow",
-            borderRadius: 12,
-            padding: "8px 12px",
-            textAlign: "center",
-            flexShrink: 0,
-            cursor: "pointer",
-          }}
-        >
-          <div
-            className="timer-number"
-            style={{
-              fontSize: 15,
-              fontWeight: 800,
-              color: "black",
-            }}
-          >
-            <i className="fa fa-tv"></i> Watch Video
-          </div>
-        </div>
-      </Card>
+       
 
       {/* Video Modal */}
       {showVideo && (
