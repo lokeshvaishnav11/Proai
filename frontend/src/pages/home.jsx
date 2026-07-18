@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 
 /**
- * PRO Ai — pixel-matched recreation
+ * پرو اے آئی — pixel-matched recreation
  * Static display data below is MOCK — wire it up to real state/props/API as needed.
  * Auth + trial countdown read live from localStorage (see useAuthGuard / useTrialCountdown below).
  */
@@ -306,7 +306,7 @@ function UpgradeScreen() {
 
           }}
         >
-          PRO Ai
+          پرو اے آئی
         </div>
 
         <div
@@ -346,7 +346,7 @@ function UpgradeScreen() {
           }}
         >
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: 6, marginBottom: 4 }}>
-            <span style={{ fontSize: 34, fontWeight: 800 }}>₹199</span>
+            <span style={{ fontSize: 34, fontWeight: 800 }}>PkR599</span>
             <span style={{ fontSize: 14, color: "#9CA3AF" }}>/ month</span>
           </div>
           <div style={{ fontSize: 12.5, color: "#4ADE80", marginBottom: 18 }}>Cancel anytime, no lock-in</div>
@@ -560,7 +560,7 @@ export default function ProAiBotUI() {
           50%      { transform: translateY(-6px); }
         }
       `}</style>
-      {trialExpired ? (
+      {false ? (
         <UpgradeScreen />
       ) : (
         <div
@@ -608,8 +608,8 @@ export default function ProAiBotUI() {
               </div>
 
               <div style={{ textAlign: "center" }}>
-                <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: -0.5, lineHeight: 1.1 }}>PRO Ai</div>
-                <div style={{ fontSize: 13, color: "#9CA3AF", marginTop: 1 }}>bot</div>
+                <div style={{ fontSize: 26, fontWeight: 800, letterSpacing: -0.5, lineHeight: 1.1 }}>پرو اے آئی</div>
+                <div style={{ fontSize: 13, color: "#9CA3AF", marginTop: 1 }}>بوٹ</div>
               </div>
 
               <div
@@ -652,12 +652,12 @@ export default function ProAiBotUI() {
                   </div>
                   <div>
                     <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>
-                      AI SIGNAL ENGINE
+                    اے آئی سگنل انجن
                     </div>
                     <div style={{ fontSize: 20, fontWeight: 800, margin: "1px 0" }}>Running</div>
                     <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
                       <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
-                      Auto Refresh
+                      خودکار ریفریش
                     </div>
                   </div>
                 </div>
@@ -680,13 +680,13 @@ export default function ProAiBotUI() {
                     <PeopleIcon />
                   </div>
                   <div>
-                    <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>PLAYERS</div>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.6 }}>کھلاڑی</div>
                     <div key={players} style={{ fontSize: 20, fontWeight: 800, margin: "1px 0", animation: "playerBump 0.5s ease", color: "white" }}>
                       {players.toLocaleString()}
                     </div>
                     <div style={{ fontSize: 12, color: "#4ADE80", display: "flex", alignItems: "center", gap: 5 }}>
                       <span className="live-dot" style={{ width: 6, height: 6, borderRadius: 999, background: "#4ADE80", display: "inline-block" }} />
-                      Active
+                     فعال
                     </div>
                   </div>
                 </div>
@@ -701,11 +701,9 @@ export default function ProAiBotUI() {
                 </div>
                 <div>
                   <div style={{ fontSize: 12.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.4 }}>
-                    24 HOURS FREE TRIAL
-                  </div>
+24 گھنٹے کا مفت ٹرائل                  </div>
                   <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35 }}>
-                    Enjoy all features for free for the next 24 hours!
-                  </div>
+اگلے 24 گھنٹوں تک تمام فیچرز مفت استعمال کریں۔                  </div>
                 </div>
               </div>
               <div
@@ -719,7 +717,7 @@ export default function ProAiBotUI() {
               >
                 <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "#daff04" }}>{trialLabel}</div>
                 <div className="timer-label" style={{ fontSize: 10.5, }}>
-                  {trialExpired ? "upgrade to continue" : "remaining"}
+                  {trialExpired ? "upgrade to continue" : "باقی وقت"}
                 </div>
               </div>
             </Card>
@@ -747,7 +745,7 @@ export default function ProAiBotUI() {
                 letterSpacing: 0.4,
               }}
             >
-              How Ai Pro Bot Works ?
+              اے آئی پرو بوٹ کیسے کام کرتا ہے؟
             </div>
 
             <div
@@ -758,7 +756,7 @@ export default function ProAiBotUI() {
                 lineHeight: 1.35,
               }}
             >
-              Watch this short video to understand how it works.
+             یہ مختصر ویڈیو دیکھیں اور طریقہ کار سمجھیں۔
             </div>
           </div>
         </div>
@@ -894,11 +892,11 @@ export default function ProAiBotUI() {
                 }}
               >
                 <div style={{ fontSize: 11, color: "#4ADE80", display: "flex", alignItems: "center", gap: 4 }}>
-                  <ClockIcon size={12} /> Bet Time
+                  <ClockIcon size={12} /> بیٹ کا وقت
                 </div>
                 <div className="timer-number" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>{betTime}</div>
                 <div className="timer-label" style={{ fontSize: 10.5 }}>
-                  {betTimeIsClock ? "next crash at" : "minutes"}
+                  {betTimeIsClock ? "اگلا کریش" : "منٹ"}
                 </div>
               </div>
             </div>
@@ -952,12 +950,12 @@ export default function ProAiBotUI() {
                     {signalScore.toFixed(2)}x
                   </div>}
                   {signalScore.toFixed(2) == 0 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800, color: "yellow" }}>
-                    Wait For SomeTime !
+                    براہِ کرم کچھ دیر انتظار کریں
                   </div>}
                   {signalScore.toFixed(2) == 1 && <div className={spinning ? "score-spinning" : ""} style={{ fontSize: 20, fontWeight: 800, color: "yellow" }}>
-                    click on next!
+                    اگلا بٹن دبائیں
                   </div>}
-                  <div style={{ fontSize: 14, color: "#4ADE80" }}>Signal Score</div>
+                  <div style={{ fontSize: 14, color: "#4ADE80" }}>سگنل اسکور</div>
                 </div>
               </div>
             </div>
@@ -982,7 +980,7 @@ export default function ProAiBotUI() {
                 cursor: "pointer",
               }}
           >
-                <PlayIcon /> Play
+                <PlayIcon /> کھیلیں
               </button>
               <button
                 onClick={handleNext}
@@ -1004,7 +1002,7 @@ export default function ProAiBotUI() {
                   opacity: loadingNext ? 0.7 : 1,
                 }}
               >
-                <ArrowRightIcon /> {loadingNext ? "Loading..." : "Next"}
+                <ArrowRightIcon /> {loadingNext ? "لوڈ ہو رہا ہے..." : "اگلا"}
               </button>
             </div>
 
