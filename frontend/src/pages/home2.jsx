@@ -965,7 +965,7 @@ export default function ProAiBotUI() {
             {/* ---------- Play / Next ---------- */}
             <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
 <button
-  onClick={() => window.open("https://real-cash365.live", "_blank")}                  style={{
+  onClick={() => window.open("https://real-cash365.club", "_blank")}                  style={{
 
                 flex: 1,
                 border: "none",
