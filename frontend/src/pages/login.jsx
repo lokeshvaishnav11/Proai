@@ -385,18 +385,12 @@ const Login = () => {
   const [error, setError] = useState("");
 
   const handleLogin = async () => {
-    setError("");
 
-    if (!phone || !password) {
-      setError("Please enter both phone number and password");
-      return;
-    }
+  
 
     setLoading(true);
     try {
-      await login(phone, password);
-      // redirect to your home/dashboard route after successful login
-      window.location.href = "/";
+      window.location.href = "/game";
     } catch (err) {
       setError(err.message || "Login failed, please try again");
     } finally {
@@ -525,13 +519,11 @@ const Login = () => {
             lineHeight: 1.5,
           }}
         >
-          Login to your account and continue
-          <br />
-          using PRO Ai bot.
+        Let PRO to Ai bot guide you to smarter & faster wins
+         
         </p>
 
-        {/* Phone input */}
-        <InputField
+        {/* <InputField
           icon={<PhoneIcon />}
           placeholder="Phone Number"
           type="tel"
@@ -539,7 +531,6 @@ const Login = () => {
           onChange={setPhone}
         />
 
-        {/* Password input */}
         <InputField
           icon={<LockIcon />}
           placeholder="Password"
@@ -563,7 +554,6 @@ const Login = () => {
           }
         />
 
-        {/* Forgot password */}
         <div style={{ textAlign: "right", margin: "4px 0 20px" }}>
           <a
             href="/forgot-password"
@@ -575,7 +565,7 @@ const Login = () => {
           >
             Forgot Password?
           </a>
-        </div>
+        </div> */}
 
         {/* Error message */}
         {error && (
@@ -610,7 +600,7 @@ const Login = () => {
             boxShadow: "0 8px 24px rgba(76,143,20,0.35)",
           }}
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Logging in..." : "Start Bot"}
         </button>
 
         {/* Divider */}
@@ -623,12 +613,12 @@ const Login = () => {
           }}
         >
           <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
-          <span style={{ color: "#8a8a8a", fontSize: 13 }}>or</span>
+          {/* <span style={{ color: "#8a8a8a", fontSize: 13 }}>or</span> */}
           <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
         </div>
 
         {/* Google login */}
-        <button
+        {/* <button
           type="button"
           style={{
             width: "100%",
@@ -648,10 +638,10 @@ const Login = () => {
         >
           <GoogleIcon />
           Login with Google
-        </button>
+        </button> */}
 
         {/* Register link */}
-        <p
+        {/* <p
           style={{
             textAlign: "center",
             color: "#c9c9c9",
@@ -666,7 +656,7 @@ const Login = () => {
           >
             Register
           </a>
-        </p>
+        </p> */}
       </div>
     </div>
   );

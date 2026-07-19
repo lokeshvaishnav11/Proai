@@ -1172,24 +1172,24 @@ const AUTH_USER_KEY = "proai_user";
 const LOGIN_PATH = "/login";
 
 /** Reads + validates the session on mount; redirects to login if missing/expired. */
-function useAuthGuard() {
-  const [ready, setReady] = useState(false);
+// function useAuthGuard() {
+//   const [ready, setReady] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem(AUTH_TOKEN_KEY);
-    const expiry = Number(localStorage.getItem(AUTH_TOKEN_EXPIRY_KEY));
+//   useEffect(() => {
+//     const token = localStorage.getItem(AUTH_TOKEN_KEY);
+//     const expiry = Number(localStorage.getItem(AUTH_TOKEN_EXPIRY_KEY));
 
-    const isValid = Boolean(token) && Boolean(expiry) && Date.now() < expiry;
+//     const isValid = Boolean(token) && Boolean(expiry) && Date.now() < expiry;
 
-    if (!isValid) {
-      window.location.href = LOGIN_PATH;
-      return;
-    }
-    setReady(true);
-  }, []);
+//     if (!isValid) {
+//       window.location.href = LOGIN_PATH;
+//       return;
+//     }
+//     setReady(true);
+//   }, []);
 
-  return ready;
-}
+//   return ready;
+// }
 
 /** Ticks every second off `trialEndsAt` in the stored user object. */
 function useTrialCountdown() {
@@ -1570,7 +1570,7 @@ const Card = ({ children, style }) => (
 
 export default function ProAiBotUI() {
   const [message, setMessage] = useState("");
-  const authReady = useAuthGuard();
+  // const authReady = useAuthGuard();
   const { label: trialLabel, expired: trialExpired } = useTrialCountdown();
   const players = useLivePlayers();
   const { score: signalScore, spinning, spin: spinSignalScore, attempt: spinAttempt } = useSignalScoreSpin();
@@ -1653,7 +1653,7 @@ export default function ProAiBotUI() {
   };
 
   // While the auth check runs (and while it's redirecting), render nothing.
-  if (!authReady) return null;
+  // if (!authReady) return null;
 
   return (
     <>
@@ -1844,7 +1844,7 @@ export default function ProAiBotUI() {
             </Card>
 
             {/* ---------- Free trial ---------- */}
-            <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            {/* <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
               <div style={{ display: "flex", gap: 10 }}>
                 <div style={{ paddingTop: 2 }}>
                   <ClockIcon />
@@ -1872,7 +1872,7 @@ export default function ProAiBotUI() {
                   {trialExpired ? "upgrade to continue" : "remaining"}
                 </div>
               </div>
-            </Card>
+            </Card> */}
 
                  <Card
         style={{
