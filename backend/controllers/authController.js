@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/user");
 const axios = require("axios")
 
 const TOKEN_EXPIRY = "3h"; // token valid for 3 hours — user has to login again after that
