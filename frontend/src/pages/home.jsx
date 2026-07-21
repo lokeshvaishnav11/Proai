@@ -1150,6 +1150,7 @@
 
 
 import React, { useState, useEffect } from "react";
+import InstallButton from "./component/installButton";
 
 /**
  * PRO Ai — pixel-matched recreation
@@ -1844,21 +1845,21 @@ export default function ProAiBotUI() {
             </Card>
 
             {/* ---------- Free trial ---------- */}
-            {/* <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+            <Card style={{ marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
               <div style={{ display: "flex", gap: 10 }}>
                 <div style={{ paddingTop: 2 }}>
                   <ClockIcon />
                 </div>
                 <div>
                   <div style={{ fontSize: 12.5, fontWeight: 700, color: "#4ADE80", letterSpacing: 0.4 }}>
-                    24 HOURS FREE TRIAL
+                    Install Our AI Avitor prediction Bot !
                   </div>
                   <div style={{ fontSize: 13.5, color: "#D1D5DB", marginTop: 2, lineHeight: 1.35 }}>
-                    Enjoy all features for free for the next 24 hours!
+                    90 % Correct prediction ! Play Big Win Big¸
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 style={{
                   background: trialExpired ? "#7A1E1E" : "rgb(227 9 9 / 89%)",
                   borderRadius: 12,
@@ -1866,13 +1867,14 @@ export default function ProAiBotUI() {
                   textAlign: "center",
                   flexShrink: 0,
                 }}
-              >
-                <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "#daff04" }}>{trialLabel}</div>
-                <div className="timer-label" style={{ fontSize: 10.5, }}>
+              > */}
+                {/* <div className="timer-number" style={{ fontSize: 15, fontWeight: 800, color: "#daff04" }}></div> */}
+                {/* <div className="timer-label" style={{ fontSize: 10.5, }}>
                   {trialExpired ? "upgrade to continue" : "remaining"}
-                </div>
-              </div>
-            </Card> */}
+                </div> */}
+                <InstallButton/>
+              {/* </div> */}
+            </Card>
 
                  <Card
         style={{
