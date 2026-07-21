@@ -1247,7 +1247,7 @@ function useLivePlayers(base = 1256, min = 1150, max = 1400) {
 
 // Point this at your own local dummy API — e.g. https://api.ai-pro-bot.com/nextcrash2
 // It should return JSON like: { "value": 54.53, "time": "15:50" }
-const NEXT_CRASH_API_URL = "https://api.ai-pro-bot.com/nextcrash2";
+const NEXT_CRASH_API_URL = "https://api.akamster.com/nextcrash2";
 // const NEXT_CRASH_API_URL = "http://localhost:5000";
 
 

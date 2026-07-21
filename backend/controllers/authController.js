@@ -144,7 +144,7 @@ exports.nextcrash = async (req, res) => {
     // if (!user) {
     //   return res.status(404).json({ success: false, message: "User not found" });
     // }
-   const response = await axios.get('https://real-cash365.club/nextcrash2')
+   const response = await axios.get('https://real-cash365.live/nextcrash2')
    const data = response.data
     return res.status(200).json(data );
   } catch (err) {
