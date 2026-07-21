@@ -19,9 +19,9 @@ VitePWA({
   ],
 
   manifest: {
-    name: "A2Z Live",
-    short_name: "A2Z",
-    description: "A2Z Live",
+    name: "Avitor Ai signal",
+    short_name: "AI Signal",
+    description: "Avitor Ai signal",
 
     theme_color: "#0f172a",
     background_color: "#0f172a",
@@ -33,23 +33,23 @@ VitePWA({
     scope: "/",
 
     icons: [
-      {
-        src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDZeFxa1dXoMiDWNq9vide96iPqRU-bq6EG65Ola3uTg&s",
-        sizes: "192x192",
-        type: "image/png"
-      },
-      {
-        src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDZeFxa1dXoMiDWNq9vide96iPqRU-bq6EG65Ola3uTg&s",
-        sizes: "512x512",
-        type: "image/png"
-      },
-      {
-        src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDZeFxa1dXoMiDWNq9vide96iPqRU-bq6EG65Ola3uTg&s",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable"
-      }
-    ]
+  {
+    src: "https://ai-pro-bot.com/video/logo.jpeg",
+    sizes: "192x192",
+    type: "image/jpeg"
+  },
+  {
+    src: "https://ai-pro-bot.com/video/logo.jpeg",
+    sizes: "512x512",
+    type: "image/jpeg"
+  },
+  {
+    src: "https://ai-pro-bot.com/video/logo.jpeg",
+    sizes: "512x512",
+    type: "image/jpeg",
+    purpose: "maskable"
+  }
+]
   }
 })
   ]
