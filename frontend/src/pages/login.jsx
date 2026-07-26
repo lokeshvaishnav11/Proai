@@ -398,268 +398,180 @@ const Login = () => {
     }
   };
 
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        width: "100%",
-        background: "#000000",
-        display: "flex",
-        justifyContent: "center",
-        padding: "24px 20px 40px",
-        fontFamily: "'Segoe UI', Roboto, sans-serif",
-        boxSizing: "border-box",
-      }}
-    >
-      <div style={{ width: "100%", maxWidth: 420, position: "relative" }}>
-        {/* Back button */}
-        <button
-          type="button"
-          onClick={() => window.history.back()}
+ return (
+  <div
+    style={{
+      minHeight: "100vh",
+      width: "100%",
+      background: "#000000",
+      display: "flex",
+      justifyContent: "center",
+      padding: "24px 20px 40px",
+      fontFamily: "'Segoe UI', Roboto, sans-serif",
+      boxSizing: "border-box",
+    }}
+  >
+    <div style={{ width: "100%", maxWidth: 420, position: "relative" }}>
+      {/* Back button */}
+      <button
+        type="button"
+        onClick={() => window.history.back()}
+        style={{
+          width: 44,
+          height: 44,
+          borderRadius: "50%",
+          border: "1px solid #3a8f2e",
+          background: "transparent",
+          color: "#ffffff",
+          fontSize: 20,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          marginBottom: 10,
+        }}
+      >
+        ‹
+      </button>
+
+      {/* Title */}
+      <div style={{ textAlign: "center", marginTop: 4 }}>
+        <span style={{ fontSize: 34, fontWeight: 800, color: "#ffffff" }}>
+          PRO{" "}
+        </span>
+        <span
           style={{
-            width: 44,
-            height: 44,
+            fontSize: 34,
+            fontWeight: 800,
+            color: "#7ed321",
+            textShadow: "0 0 18px rgba(126,211,33,0.6)",
+          }}
+        >
+          Ai
+        </span>
+        <div style={{ color: "#c9c9c9", fontSize: 16, marginTop: 2 }}>
+          bot
+        </div>
+      </div>
+
+      {/* Glowing robot avatar */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: "10px 0 6px",
+        }}
+      >
+        <div
+          style={{
+            width: 220,
+            height: 220,
             borderRadius: "50%",
-            border: "1px solid #3a8f2e",
-            background: "transparent",
-            color: "#ffffff",
-            fontSize: 20,
+            position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            cursor: "pointer",
-            marginBottom: 10,
-          }}
-        >
-          ‹
-        </button>
-
-        {/* Title */}
-        <div style={{ textAlign: "center", marginTop: 4 }}>
-          <span style={{ fontSize: 34, fontWeight: 800, color: "#ffffff" }}>
-            PRO{" "}
-          </span>
-          <span
-            style={{
-              fontSize: 34,
-              fontWeight: 800,
-              color: "#7ed321",
-              textShadow: "0 0 18px rgba(126,211,33,0.6)",
-            }}
-          >
-            Ai
-          </span>
-          <div style={{ color: "#c9c9c9", fontSize: 16, marginTop: 2 }}>
-            bot
-          </div>
-        </div>
-
-        {/* Glowing robot avatar */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            margin: "10px 0 6px",
+            background:
+              "radial-gradient(circle, rgba(126,211,33,0.25) 0%, rgba(126,211,33,0.08) 45%, rgba(0,0,0,0) 70%)",
           }}
         >
           <div
             style={{
-              width: 220,
-              height: 220,
+              position: "absolute",
+              width: "100%",
+              height: "100%",
               borderRadius: "50%",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background:
-                "radial-gradient(circle, rgba(126,211,33,0.25) 0%, rgba(126,211,33,0.08) 45%, rgba(0,0,0,0) 70%)",
+              border: "1px solid rgba(126,211,33,0.35)",
             }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                borderRadius: "50%",
-                border: "1px solid rgba(126,211,33,0.35)",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                width: "78%",
-                height: "78%",
-                borderRadius: "50%",
-                border: "1px solid rgba(126,211,33,0.25)",
-              }}
-            />
-             <img src="/video/logo.jpeg" style={{ width: "166px"}}></img>
-
-          </div>
+          />
+          <div
+            style={{
+              position: "absolute",
+              width: "78%",
+              height: "78%",
+              borderRadius: "50%",
+              border: "1px solid rgba(126,211,33,0.25)",
+            }}
+          />
+          <img src="/video/logo.jpeg" alt="Logo" style={{ width: "166px" }} />
         </div>
+      </div>
 
-        {/* Welcome text */}
-        <h1
-          style={{
-            color: "#ffffff",
-            fontSize: 26,
-            fontWeight: 800,
-            textAlign: "center",
-            margin: "6px 0 6px",
-          }}
-        >
-          Welcome Back!
-        </h1>
+      {/* Welcome text */}
+      <h1
+        style={{
+          color: "#ffffff",
+          fontSize: 26,
+          fontWeight: 800,
+          textAlign: "center",
+          margin: "6px 0 6px",
+        }}
+      >
+        Bem-vindo de volta!
+      </h1>
+      <p
+        style={{
+          color: "#9d9d9d",
+          fontSize: 14,
+          textAlign: "center",
+          margin: "0 0 24px",
+          lineHeight: 1.5,
+        }}
+      >
+        Deixe o robô PRO Ai guiar você para vitórias mais rápidas e inteligentes
+      </p>
+
+      {/* Error message */}
+      {error && (
         <p
           style={{
-            color: "#9d9d9d",
-            fontSize: 14,
+            color: "#ff5c5c",
+            fontSize: 13.5,
             textAlign: "center",
-            margin: "0 0 24px",
-            lineHeight: 1.5,
+            margin: "0 0 14px",
           }}
         >
-        Let PRO to Ai bot guide you to smarter & faster wins
-         
+          {error}
         </p>
+      )}
 
-        {/* <InputField
-          icon={<PhoneIcon />}
-          placeholder="Phone Number"
-          type="tel"
-          value={phone}
-          onChange={setPhone}
-        />
+      {/* Login button */}
+      <button
+        type="button"
+        onClick={handleLogin}
+        disabled={loading}
+        style={{
+          width: "100%",
+          padding: "16px 0",
+          borderRadius: 12,
+          border: "none",
+          background: "linear-gradient(180deg, #7ed321 0%, #4c8f14 100%)",
+          color: "#ffffff",
+          fontSize: 17,
+          fontWeight: 700,
+          cursor: loading ? "not-allowed" : "pointer",
+          opacity: loading ? 0.7 : 1,
+          boxShadow: "0 8px 24px rgba(76,143,20,0.35)",
+        }}
+      >
+        {loading ? "Entrando..." : "Iniciar Robô"}
+      </button>
 
-        <InputField
-          icon={<LockIcon />}
-          placeholder="Password"
-          type={showPassword ? "text" : "password"}
-          value={password}
-          onChange={setPassword}
-          rightIcon={
-            <button
-              type="button"
-              onClick={() => setShowPassword((s) => !s)}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                padding: 0,
-              }}
-            >
-              <EyeIcon off={!showPassword} />
-            </button>
-          }
-        />
-
-        <div style={{ textAlign: "right", margin: "4px 0 20px" }}>
-          <a
-            href="/forgot-password"
-            style={{
-              color: "#7ed321",
-              fontSize: 13,
-              textDecoration: "none",
-            }}
-          >
-            Forgot Password?
-          </a>
-        </div> */}
-
-        {/* Error message */}
-        {error && (
-          <p
-            style={{
-              color: "#ff5c5c",
-              fontSize: 13.5,
-              textAlign: "center",
-              margin: "0 0 14px",
-            }}
-          >
-            {error}
-          </p>
-        )}
-
-        {/* Login button */}
-        <button
-          type="button"
-          onClick={handleLogin}
-          disabled={loading}
-          style={{
-            width: "100%",
-            padding: "16px 0",
-            borderRadius: 12,
-            border: "none",
-            background: "linear-gradient(180deg, #7ed321 0%, #4c8f14 100%)",
-            color: "#ffffff",
-            fontSize: 17,
-            fontWeight: 700,
-            cursor: loading ? "not-allowed" : "pointer",
-            opacity: loading ? 0.7 : 1,
-            boxShadow: "0 8px 24px rgba(76,143,20,0.35)",
-          }}
-        >
-          {loading ? "Logging in..." : "Start Bot"}
-        </button>
-
-        {/* Divider */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            margin: "22px 0",
-            gap: 12,
-          }}
-        >
-          <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
-          {/* <span style={{ color: "#8a8a8a", fontSize: 13 }}>or</span> */}
-          <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
-        </div>
-
-        {/* Google login */}
-        {/* <button
-          type="button"
-          style={{
-            width: "100%",
-            padding: "14px 0",
-            borderRadius: 12,
-            border: "1px solid #3a8f2e",
-            background: "transparent",
-            color: "#ffffff",
-            fontSize: 15,
-            fontWeight: 600,
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        >
-          <GoogleIcon />
-          Login with Google
-        </button> */}
-
-        {/* Register link */}
-        {/* <p
-          style={{
-            textAlign: "center",
-            color: "#c9c9c9",
-            fontSize: 14,
-            marginTop: 24,
-          }}
-        >
-          Don&apos;t have an account?{" "}
-          <a
-            href="/register"
-            style={{ color: "#7ed321", textDecoration: "none", fontWeight: 600 }}
-          >
-            Register
-          </a>
-        </p> */}
+      {/* Divider */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin: "22px 0",
+          gap: 12,
+        }}
+      >
+        <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
+        <div style={{ flex: 1, height: 1, background: "#2a2a2a" }} />
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 /* ---------- shared bits ---------- */
