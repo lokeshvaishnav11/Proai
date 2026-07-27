@@ -2209,7 +2209,7 @@ export default function ProAiBotUI() {
   style={{ width: "100%" }}
   autoPlay
 >
-  <source src="/video/newv.mp4" type="video/mp4" />
+  <source src="/video/newvv.mp4" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
