@@ -1582,6 +1582,21 @@ export default function ProAiBotUI() {
     const [showVideo, setShowVideo] = useState(false);
 
 
+    const formatBetTime = (betTime) => {
+  const [time, modifier] = betTime.split(' ');
+
+  let [hours, minutes] = time.split(':').map(Number);
+
+  if (modifier === 'PM' && hours !== 12) {
+    hours += 12;
+  }
+
+  if (modifier === 'AM' && hours === 12) {
+    hours = 0;
+  }
+
+  return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+};
  
 
 
@@ -2027,7 +2042,7 @@ export default function ProAiBotUI() {
     <div style={{ fontSize: 11, color: "#4ADE80", display: "flex", alignItems: "center", gap: 4 }}>
       <ClockIcon size={12} /> Tempo de Aposta
     </div>
-    <div className="timer-number" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>{betTime}</div>
+    <div className="timer-number" style={{ fontSize: 24, fontWeight: 800, lineHeight: 1.2 }}>{formatBetTime(betTime)}</div>
     <div className="timer-label" style={{ fontSize: 10.5 }}>
       {betTimeIsClock ? "próximo crash às" : "minutos"}
     </div>
